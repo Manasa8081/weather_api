@@ -192,7 +192,7 @@ body {
 
         function checkWeatherForNextFiveDays() {
             const city = document.getElementById('city').value;
-            const apiUrl = https://api.openweathermap.org/data/2.5/forecast?q=${encodeURIComponent(city)}&appid=9221100d5ff9086cd0f69da09cf0d795&units=metric;
+            const apiUrl = https://api.openweathermap.org/data/2.5/forecast?q=${encodeURIComponent(city)}&appid=fcf1ca409ca3fe4cb53986ebf97b89d4&units=metric;
             
             fetch(apiUrl)
             .then(response => {
@@ -218,7 +218,9 @@ body {
                 for (let i = 0; i < 5; i++) {
                     let forecasts = dailyForecasts[days[i]];
                     let avgTemp = forecasts.reduce((sum, f) => sum + f.main.temp, 0) / forecasts.length;
-                    let avgHumidity = forecasts.reduce((sum, f) => sum + f.main.humidity, 0) / forecasts.length;                     let avgWindSpeed = forecasts.reduce((sum, f) => sum + f.wind.speed, 0) / forecasts.length;                     let weatherDescription = forecasts[0].weather[0].description; 
+                    let avgHumidity = forecasts.reduce((sum, f) => sum + f.main.humidity, 0) / forecasts.length;      
+            let avgWindSpeed = forecasts.reduce((sum, f) => sum + f.wind.speed, 0) / forecasts.length;                
+                            let weatherDescription = forecasts[0].weather[0].description; 
                     let iconUrl = getWeatherImage(weatherDescription); 
                     let dateForecast = new Date(days[i]).toLocaleDateString('en-US', { weekday: 'long' });
 
