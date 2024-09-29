@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Myntra Static UI</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color:whitesmoke;
+        }
+
+        /* Header */
+        .header {
+            background-color: lightcoral;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        /* Navigation bar */
+        .navbar {
+            display: flex;
+            justify-content: space-around;
+            background-color: navy;
+            padding: 10px;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+        }
+
+        .navbar a:hover {
+            background-color:lightcoral;
+            border-radius: 5px;
+        }
+
+        /* Search bar */
+        .search-bar {
+            margin: 20px auto;
+            max-width: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .search-bar input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            border: 1px solid;
+            border-radius: 5px 0 0 5px;
+        }
+
+        .search-bar button {
+            padding: 10px;
+            background-color: palevioletred;
+            color: white;
+            border: none;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+        }
+
+        /* Main content */
+        .main-content {
+            padding: 20px;
+        }
+
+        .main-content h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .category, .products {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            padding: 20px;
+            text-align: center;
+            width: 250px;
+        }
+
+        .card img {
+            
+            max-width: 100%;
+            border-radius: 10px;
+        }
+        .color-box:hover {
+            transform: scale(1.1);
+        }
+
+        .footer {
+            background-color:black;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <h1>Myntra</h1>
+    </div>
+
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <a href="#">Men</a>
+        <a href="#">Women</a>
+        <a href="#">Kids</a>
+        <a href="#">Home & Living</a>
+        <a href="#">Beauty</a>
+    </div>
+
+    <!-- Search Bar -->
+    <div class="search-bar">
+        <input type="text" placeholder="Search for products, brands and more">
+        <button>Search</button>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <h2>Featured Categories</h2>
+        <div class="category">
+            <div class="card">
+                <img src="https://static.toiimg.com/thumb/resizemode-4,width-1280,height-720,msid-107756440/107756440.jpg" alt="Men's Fashion">
+                <h3>Men's Fashion</h3>
+            </div>
+            <div class="card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2VbCtqJFzagGJjeGLlrPhJMdJCzUC8eD7PA&s" alt="Women's Fashion">
+                <h3>Women's Fashion</h3>
+            </div>
+            <div class="card">
+                <img src="https://static.toiimg.com/thumb/resizemode-4,width-1280,height-720,msid-86676259/86676259.jpg" alt="Kids' Fashion">
+                <h3>Kids' Fashion</h3>
+            </div>
+        </div>
+
+        <h2>Top Products</h2>
+        <div class="products">
+            <div class="card">
+                <img src="https://blog.myntra.com/wp-content/uploads/2021/09/Five-Beauty-Essentials.jpg"width="300",heignt="300"alt="Product 1">
+                <h3>Beauty Products</h3>
+            </div>
+            <div class="card">
+                <img src="https://cdn1.desidime.com/cdn-cgi/image/fit=contain,f=auto,onerror=redirect,w=1200,h=628,q=90/topics/photos/1621514/original/Myntra-Right-to-Fashion-Sale-banner-Desidime-SEO.jpg" alt="Product 2">
+                <h3>Sale on clothing</h3>
+            </div>
+            <div class="card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoCVO_SFn-PrQtbg5GOLmBCehDb5T4NB4i5A&s" alt="Product 3">
+                <h3>Offers on top brands</h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>© 2024 Myntra. All Rights Reserved.</p>
+    </div>
+
+</body>
