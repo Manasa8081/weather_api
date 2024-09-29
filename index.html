@@ -140,55 +140,56 @@ body {
         }
 
         function checkWeather() {
-            const city = document.getElementById('city').value;
-            const apiUrl = https://api.openweathermap.org/data/2.5/forecast?q=${encodeURIComponent(city)}&appid=fcf1ca409ca3fe4cb53986ebf97b89d4&units=metric;
-            
-            fetch(apiUrl)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('City not found');
-                }
-                return response.json();
-            })
-            .then(data => {
-                let currentTemperature = data.list[0].main.temp;
-                let currentDay = new Date(data.list[0].dt_txt).toLocaleDateString('en-US', { weekday: 'long' });
-                let currentHTML = `
-                    <div class="current-weather-box">
-                        <h2>Current Temperature in ${city} (${currentDay})</h2>
-                        <p>Temp: ${currentTemperature}°C</p>
-                    </div>
-                `;
-                document.getElementById('currentWeather').innerHTML = currentHTML;
-
-                let resultHTML = '';
-                for (let i = 0; i < 5; i++) {
-                    let forecast = data.list[i];
-                    let dateTime = new Date(forecast.dt_txt).toLocaleString();
-                    let temperature = forecast.main.temp;
-                    let weatherDescription = forecast.weather[0].description;
-                    let iconUrl = getWeatherImage(weatherDescription);
-                    let forecastDay = new Date(forecast.dt_txt).toLocaleDateString('en-US', { weekday: 'long' });
-
-                    resultHTML += `
-                        <div class="weather-box">
-                            <h2>${dateTime} (${forecastDay})</h2>
-                            <img src="${iconUrl}" alt="Weather Icon">
-                            <p>Temp: ${temperature}°C</p>
-                            <p>Description: ${weatherDescription}</p>
-                        </div>
-                    `;
-                }
-
-                document.getElementById('inputContainer').style.display = 'none';
-                document.getElementById('mainHeading').innerText = Weather Forecasting in ${city};
-                document.getElementById('weatherResult').innerHTML = resultHTML;
-                document.getElementById('nextFiveDaysButtonContainer').style.display = 'block';
-            })
-            .catch(error => {
-                document.getElementById('weatherResult').innerHTML = <p>${error.message}</p>;
-            });
+    const city = document.getElementById('city').value;
+    const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${encodeURIComponent(city)}&appid=fcf1ca409ca3fe4cb53986ebf97b89d4&units=metric`;
+    
+    fetch(apiUrl)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('City not found');
         }
+        return response.json();
+    })
+    .then(data => {
+        let currentTemperature = data.list[0].main.temp;
+        let currentDay = new Date(data.list[0].dt_txt).toLocaleDateString('en-US', { weekday: 'long' });
+        let currentHTML = `
+            <div class="current-weather-box">
+                <h2>Current Temperature in ${city} (${currentDay})</h2>
+                <p>Temp: ${currentTemperature}°C</p>
+            </div>
+        `;
+        document.getElementById('currentWeather').innerHTML = currentHTML;
+
+        let resultHTML = '';
+        for (let i = 0; i < 5; i++) {
+            let forecast = data.list[i];
+            let dateTime = new Date(forecast.dt_txt).toLocaleString();
+            let temperature = forecast.main.temp;
+            let weatherDescription = forecast.weather[0].description;
+            let iconUrl = getWeatherImage(weatherDescription);
+            let forecastDay = new Date(forecast.dt_txt).toLocaleDateString('en-US', { weekday: 'long' });
+
+            resultHTML += `
+                <div class="weather-box">
+                    <h2>${dateTime} (${forecastDay})</h2>
+                    <img src="${iconUrl}" alt="Weather Icon">
+                    <p>Temp: ${temperature}°C</p>
+                    <p>Description: ${weatherDescription}</p>
+                </div>
+            `;
+        }
+
+        document.getElementById('inputContainer').style.display = 'none';
+        document.getElementById('mainHeading').innerText = `Weather Forecasting in ${city}`;
+        document.getElementById('weatherResult').innerHTML = resultHTML;
+        document.getElementById('nextFiveDaysButtonContainer').style.display = 'block';
+    })
+    .catch(error => {
+        document.getElementById('weatherResult').innerHTML = `<p>${error.message}</p>`;
+    });
+}
+
 
         function checkWeatherForNextFiveDays() {
             const city = document.getElementById('city').value;
